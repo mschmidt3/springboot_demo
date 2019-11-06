@@ -15,3 +15,7 @@
 ./gradlew clean
 ```
 
+# Steps
+
+* step_0 - app created
+* step_1 - HelloWorldController returns Hello World
