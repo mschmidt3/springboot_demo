@@ -19,4 +19,5 @@
 
 * step_0 - app created
 * step_1 - HelloWorldController returns Hello World
-* step_2 - HelloWorldController wit multiple methods
+* step_2 - HelloWorldController with multiple methods
+* setp_3 - JPA

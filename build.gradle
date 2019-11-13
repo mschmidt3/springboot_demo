@@ -16,10 +16,10 @@ configurations {
 }
 
 repositories {
-	maven {
-        url "http://docker.local:8081/repository/maven-central/"
-    }
-	// mavenCentral()
+	// maven {
+    //     url "http://docker.local:8081/repository/maven-central/"
+    // }
+	mavenCentral()
 }
 
 dependencies {
