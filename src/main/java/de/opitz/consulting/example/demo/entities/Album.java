@@ -14,6 +14,10 @@ public class Album {
     private Long   userId;
     private String title;
 
+    public Album (long userId, String title){
+        this.userId = userId;
+        this.title = title;
+    }
  
     @Override
     public String toString(){
