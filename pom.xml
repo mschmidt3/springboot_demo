@@ -14,13 +14,14 @@
 	<name>demo</name>
 	<description>Demo project for Spring Boot</description>
 
+<!--
   <repositories>
     <repository>
       <id>maven-central</id>
       <url>http://docker.local:8081/repository/maven-central/</url>
     </repository>
   </repositories>
-
+-->
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
