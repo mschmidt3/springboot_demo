@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -27,10 +28,20 @@ public class AlbumController {
     public Optional<Album> getElement(@PathVariable Long id){
         Optional<Album> album = repository.findById(id);
         if(! album.isPresent() ){
-            return Optional.of(null);
+            return null;
+            // return Optional.of(new Album());
             /* throw new ResponseStatusException(
                 HttpStatus.NOT_FOUND, "Album Not Found", null); */
         }
         return album;
     }
+
+    @PostMapping("")
+    public Album create(@RequestBody Album element){
+        Album newElement = repository.save(element);
+
+        return newElement;
+    }
+
+
 }
