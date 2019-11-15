@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.*;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,8 +22,8 @@ public class AlbumController {
     AlbumRepository repository;
 
     @GetMapping("")
-    public List<Album> index(){
-        return repository.findAll();
+    public Page<Album> index(Pageable pageable){
+        return repository.findAll(pageable);  
     }
 
     @GetMapping("/{id}")
@@ -29,8 +31,6 @@ public class AlbumController {
         Optional<Album> album = repository.findById(id);
         if(! album.isPresent() ){
             return ResponseEntity.notFound().build();
-            /* throw new ResponseStatusException(
-                HttpStatus.NOT_FOUND, "Album Not Found", null); */
         }
         return new ResponseEntity( album, HttpStatus.OK );
     }
@@ -54,7 +54,7 @@ public class AlbumController {
         if(! foundAlbum.isPresent() ){
             return ResponseEntity.notFound().build();
         }
-        
+
         album.setId(id);
         repository.save(album);
 
