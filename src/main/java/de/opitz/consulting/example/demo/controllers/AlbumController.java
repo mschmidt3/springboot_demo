@@ -24,16 +24,16 @@ public class AlbumController {
         return repository.findAll();
     }
 
-    @GetMapping("{id}")
-    public Optional<Album> getElement(@PathVariable Long id){
+    @GetMapping("/{id}")
+    public ResponseEntity<Album> getElement(@PathVariable Long id){
         Optional<Album> album = repository.findById(id);
         if(! album.isPresent() ){
-            return null;
+            return ResponseEntity.notFound().build();
             // return Optional.of(new Album());
             /* throw new ResponseStatusException(
                 HttpStatus.NOT_FOUND, "Album Not Found", null); */
         }
-        return album;
+        return new ResponseEntity( album, HttpStatus.OK );
     }
 
     @PostMapping("")
@@ -43,9 +43,11 @@ public class AlbumController {
         return newElement;
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public void deleteElement(@PathVariable Long id){        
         repository.deleteById(id);
     }
+
+
 
 }
