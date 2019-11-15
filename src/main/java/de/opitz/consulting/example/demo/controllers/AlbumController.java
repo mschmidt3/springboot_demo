@@ -43,5 +43,9 @@ public class AlbumController {
         return newElement;
     }
 
+    @DeleteMapping("{id}")
+    public void deleteElement(@PathVariable Long id){        
+        repository.deleteById(id);
+    }
 
 }
