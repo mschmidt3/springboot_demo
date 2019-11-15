@@ -14,6 +14,10 @@ public class Album {
     private Long   userId;
     private String title;
 
+    public Album (){
+        this.userId = -1L;
+        this.title = "";
+    }
     public Album (long userId, String title){
         this.userId = userId;
         this.title = title;
