@@ -8,7 +8,7 @@
 ./mvnw clean
 ```
 
-### mit gardle
+### mit gradle
 
 ```
 ./gradlew bootJar
