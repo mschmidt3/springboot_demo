@@ -3,6 +3,8 @@ package de.opitz.consulting.example.demo.controllers;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
 import org.springframework.data.domain.PageRequest;
@@ -37,7 +39,7 @@ public class UserController {
     }
 
     @PostMapping("")
-    public User create(@RequestBody User element){
+    public User create(@Valid @RequestBody User element){
         User newElement = repository.save(element);
 
         return newElement;

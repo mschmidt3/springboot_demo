@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.*;
 
+import org.hibernate.validator.constraints.Length;
+
 @Entity
 public class User{
     @Id
@@ -20,9 +22,13 @@ public class User{
     private String name;
     
     @NotBlank
-    @Column( length = 20, nullable = false)
+    @Length(min=2, max=20)
+    @Column( length = 20, nullable = false, unique=true)
     private String username;
+
+    @Email
     private String email;
+    @Pattern( regexp="^\\+?[0-9 -]*")
     private String phone;
     private String website;
 
@@ -37,19 +43,19 @@ public class User{
         this.website="";
     }
 
-    public User(String username, String name){
+    public User(final String username, final String name) {
         this.name = name;
         this.username = username;
-        this.email="";
-        this.phone="";
-        this.website="";
+        this.email = "";
+        this.phone = "";
+        this.website = "";
     }
 
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(final Long id) {
         this.id = id;
     }
 
@@ -61,7 +67,7 @@ public class User{
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
@@ -69,7 +75,7 @@ public class User{
         return username;
     }
 
-    public void setUsername(String username) {
+    public void setUsername(final String username) {
         this.username = username;
     }
 
@@ -77,7 +83,7 @@ public class User{
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(final String email) {
         this.email = email;
     }
 
@@ -85,7 +91,7 @@ public class User{
         return phone;
     }
 
-    public void setPhone(String phone) {
+    public void setPhone(final String phone) {
         this.phone = phone;
     }
 
@@ -93,7 +99,7 @@ public class User{
         return website;
     }
 
-    public void setWebsite(String website) {
+    public void setWebsite(final String website) {
         this.website = website;
     }
 
