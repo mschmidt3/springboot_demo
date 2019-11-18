@@ -16,6 +16,7 @@ import de.opitz.consulting.example.demo.repositories.UserRepository;
 
 @RestController
 @RequestMapping("/users")
+@CrossOrigin
 public class UserController {
     
     @Autowired

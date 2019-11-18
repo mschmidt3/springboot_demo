@@ -5,17 +5,16 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import de.opitz.consulting.example.demo.entities.Album;
 import de.opitz.consulting.example.demo.repositories.AlbumRepository;
 
 @RestController
 @RequestMapping("/albums")
+@CrossOrigin
 public class AlbumController {
     
     @Autowired

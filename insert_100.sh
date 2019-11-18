@@ -1,4 +1,16 @@
 #!/bin/bash
+curl -X POST -H "Content-Type: application/json" localhost:8080/users -d '{"username":"ttiger", "name":"Tiger, Theobald"}'
+curl -X POST -H "Content-Type: application/json" localhost:8080/users -d '{"username":"iworbel", "name":"Worbel, Ignaz"}'
+curl -X POST -H "Content-Type: application/json" localhost:8080/users -d '{"username":"khauser", "name":"Hauser, Kaspar"}'
+curl -X POST -H "Content-Type: application/json" localhost:8080/users -d '{"username":"alyhse", "name":"Lyhse, Anna"}'
+curl -X POST -H "Content-Type: application/json" localhost:8080/users -d '{"username":"acula", "name":"Cula, Dr. A."}'
+curl -X POST -H "Content-Type: application/json" localhost:8080/users -d '{"username":"aneumann", "name":"Neumann, Alfred E."}'
+curl -X POST -H "Content-Type: application/json" localhost:8080/users -d '{"username":"dblack", "name":"Black, Don"}'
+curl -X POST -H "Content-Type: application/json" localhost:8080/users -d '{"username":"cborell", "name":"Borell, Claude"}'
+curl -X POST -H "Content-Type: application/json" localhost:8080/users -d '{"username":"uhorster", "name":"Horster, Ulrich"}'
+
+# curl -X POST -H "Content-Type: application/json" localhost:8080/users -d '{ "name":"Dummy"}'
+
 curl -X POST -H "Content-Type: application/json" localhost:8080/albums -d '{"userId":6, "title":"Axis: Bold as Love"}'
 curl -X POST -H "Content-Type: application/json" localhost:8080/albums -d '{"userId":2, "title":"Born in the U.S.A."}'
 curl -X POST -H "Content-Type: application/json" localhost:8080/albums -d '{"userId":4, "title":"Kid A"}'

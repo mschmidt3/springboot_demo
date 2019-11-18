@@ -9,14 +9,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.*;
 
 @Entity
 public class User{
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.TABLE)
     private Long id;
 
     private String name;
+    
+    @NotBlank
     @Column( length = 20, nullable = false)
     private String username;
     private String email;
@@ -28,7 +31,7 @@ public class User{
 
     public User(){
         this.name="-";
-        this.username="<invalid>";
+        this.username="";
         this.email="";
         this.phone="";
         this.website="";

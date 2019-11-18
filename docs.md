@@ -4,6 +4,7 @@
 
 @RestController
 @Controller
+@CrossOrigin
 
 @RequestMapping
 @GetMapping
