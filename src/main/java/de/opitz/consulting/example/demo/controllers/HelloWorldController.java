@@ -4,12 +4,23 @@ import javax.activation.MimeType;
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.*;
 import org.springframework.web.bind.annotation.*;
+
+import de.opitz.consulting.example.demo.services.DemoService;
 
 @RestController
 public class HelloWorldController {
     Logger log = LoggerFactory.getLogger(HelloWorldController.class);
+
+    @Autowired
+    DemoService demoService;
+
+    @GetMapping("/service")
+    public String demo(){
+        return demoService.demoMethod();
+    }
 
     /**
      * Hello World
