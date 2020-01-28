@@ -50,6 +50,11 @@ class CountriesController {
         return element.get();
     }
 
+    @GetMapping("/region/{name}")
+    public List<Countries> byRegion(@PathVariable final String name) {
+        return repository.findAllByRegion(name);
+    }
+
     @GetMapping("/find")
     public Countries byCode( @RequestParam(value="code") String code ){
         final Optional<Countries> element = repository.findByAlpha2code(code.toUpperCase());
