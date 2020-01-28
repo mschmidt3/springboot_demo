@@ -56,8 +56,15 @@ class CountriesController {
     }
 
     @GetMapping("/find")
-    public Countries byCode( @RequestParam(value="code") String code ){
-        final Optional<Countries> element = repository.findByAlpha2code(code.toUpperCase());
+    public Countries byCode( @RequestParam(value="code") final String code ){
+        final Optional<Countries> element;
+        if(code.length()==2){
+            element = repository.findByAlpha2code(code.toUpperCase());
+        }else{
+            element = repository.findByAlpha3code(code.toUpperCase());
+        }
+
+        
         if(!element.isPresent()){
             throw new ElementNotFoundException("Country with code ["+code+"] not found.");
         }
@@ -65,23 +72,23 @@ class CountriesController {
     }
 
     @PostMapping("")
-    public ResponseEntity<Object> create(@RequestBody Countries element){
-        Countries savedElement = repository.save(element);
+    public ResponseEntity<Object> create(@RequestBody final Countries element){
+        final Countries savedElement = repository.save(element);
 
-        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+        final URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(savedElement.getId()).toUri();
  
         return ResponseEntity.created(location).build();
     }
 
     @DeleteMapping("/{id}")
-    public void deleteElement(@PathVariable long id) {
+    public void deleteElement(@PathVariable final long id) {
         repository.deleteById(id);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Object> update(@RequestBody Countries element, @PathVariable long id) {
-        Optional<Countries> elementOptional = repository.findById(id);
+    public ResponseEntity<Object> update(@RequestBody final Countries element, @PathVariable final long id) {
+        final Optional<Countries> elementOptional = repository.findById(id);
  
         if (!elementOptional.isPresent()){
             return ResponseEntity.notFound().build();
@@ -96,17 +103,17 @@ class CountriesController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PATCH, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> partialUpdateGeneric(
-        @RequestBody Map<String, Object> updates,
-        @PathVariable("id") Long id) {
-            Optional<Countries> elementOptional = repository.findById(id);
+        @RequestBody final Map<String, Object> updates,
+        @PathVariable("id") final Long id) {
+            final Optional<Countries> elementOptional = repository.findById(id);
  
             if (!elementOptional.isPresent()){
                 return ResponseEntity.notFound().build();
             }
-            Countries element = elementOptional.get();
+            final Countries element = elementOptional.get();
 
             element.setId(id);
-            for(Map.Entry<String, Object> entry : updates.entrySet()){
+            for(final Map.Entry<String, Object> entry : updates.entrySet()){
                 log.info("   key:" + entry.getKey() + " val:"+ entry.getValue());
 
                 if(entry.getKey().equals("population")){
