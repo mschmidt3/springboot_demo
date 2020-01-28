@@ -1,9 +1,8 @@
 package de.opitz.consulting.example.demo.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.*;
+import org.hibernate.validator.constraints.Length;
 
 @Entity
 public class Countries {
@@ -11,7 +10,11 @@ public class Countries {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
  
+    @NotBlank
+    @Length(min=2, max=100)
+    @Column( length = 100, nullable = false, unique=true)
     private String name;
+
     private String alpha2code;
     private String alpha3code;
     private String capital;

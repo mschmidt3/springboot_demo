@@ -1,4 +1,4 @@
-# opitz condulting Spring Boot Demo
+# Opitz Consulting Spring Boot Demo
 
 ## getting started
 
