@@ -39,3 +39,15 @@ touch .\src\main\java\de\opitz\consulting\example\demo\controllers\CountriesCont
 # jetzt fehlen Daten
 touch .\src\main\java\de\opitz\consulting\example\demo\CountriesDataLoader.java
 ```
+
+
+```
+# CReate
+curl -X POST -H "Content-Type: application/json" http://localhost:8080/api/countries/ -d '{"name":"Spanien","alpha2code":"ES","capital":"Madrid"}'
+
+# Update
+curl -X PUT -H "Content-Type: application/json" http://localhost:8080/api/countries/4 -d '{"id":4,"name":"Spanien","alpha2code":"ES","alpha3code":"ESP","capital":"Madrid","region":null,"subregion":null,"population":null}'
+
+# Delete 
+curl -X DELETE http://localhost:8080/api/countries/4
+```

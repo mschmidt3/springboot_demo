@@ -6,7 +6,9 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -57,4 +59,25 @@ class CountriesController {
  
         return ResponseEntity.created(location).build();
     }
+
+    @DeleteMapping("/{id}")
+    public void deleteElement(@PathVariable long id) {
+        repository.deleteById(id);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Object> update(@RequestBody Countries element, @PathVariable long id) {
+ 
+        Optional<Countries> elementOptional = repository.findById(id);
+ 
+        if (!elementOptional.isPresent())
+            return ResponseEntity.notFound().build();
+ 
+        element.setId(id);
+        
+        repository.save(element);
+ 
+        return ResponseEntity.noContent().build();
+    }
+
 }
