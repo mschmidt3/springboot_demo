@@ -18,6 +18,10 @@ public class Countries {
     private String region;
     private String subregion;
     private Long population;
+    
+    private String flag;
+    private String continent;
+    
 
     public Long getId() {
         return id;
@@ -96,6 +100,22 @@ public class Countries {
         this.name = name;
         this.alpha2code = alpha2code;
         this.capital = capital;
+    }
+
+    public String getFlag() {
+        return flag;
+    }
+
+    public void setFlag(String flag) {
+        this.flag = flag;
+    }
+
+    public String getContinent() {
+        return continent;
+    }
+
+    public void setContinent(String continent) {
+        this.continent = continent;
     }
 
 }
