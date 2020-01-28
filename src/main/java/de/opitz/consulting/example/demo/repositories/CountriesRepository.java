@@ -9,5 +9,6 @@ import de.opitz.consulting.example.demo.entities.Countries;
 @Repository
 public interface CountriesRepository extends JpaRepository<Countries, Long> {
 
-	Optional<Countries> findByName(String name);
+    Optional<Countries> findByName(String name);
+    Optional<Countries> findByAlpha2code(String code);
 }
