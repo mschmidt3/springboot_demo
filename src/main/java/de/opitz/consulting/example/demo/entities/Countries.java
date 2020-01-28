@@ -88,4 +88,14 @@ public class Countries {
         return "[" + alpha2code + ", " + name + "]";
     }
 
+    public Countries() {
+        this.name = "none";
+    }
+
+    public Countries(String name, String alpha2code, String capital) {
+        this.name = name;
+        this.alpha2code = alpha2code;
+        this.capital = capital;
+    }
+
 }

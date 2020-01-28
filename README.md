@@ -25,11 +25,17 @@
 # Countries
 
 ```
+# Entity anlegen
 mkdir .\src\main\java\de\opitz\consulting\example\demo\entities
 touch .\src\main\java\de\opitz\consulting\example\demo\entities\Countries.java
 
+# repository anlegen
 mkdir .\src\main\java\de\opitz\consulting\example\demo\repositories
 touch .\src\main\java\de\opitz\consulting\example\demo\repositories\CountreisRepository.java
 
-touch src/main/java/de/opitz/consulting/example/demo/controllers/CountriesController.java
+# Controller anlegen 
+touch .\src\main\java\de\opitz\consulting\example\demo\controllers\CountriesController.java
+
+# jetzt fehlen Daten
+touch .\src\main\java\de\opitz\consulting\example\demo\CountriesDataLoader.java
 ```
